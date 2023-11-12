@@ -6,6 +6,8 @@ a,h2,title,body{
     color: white;
 }
 
+
+
 /* DOYI WORLD */
 
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400&display=swap');
@@ -41,6 +43,7 @@ a,h2,title,body{
     -moz-animation: neon 1s ease infinite;
     -webkit-animation: neon 1s ease infinite;
 }
+
 
 @keyframes neon {
 
@@ -81,46 +84,81 @@ a,h2,title,body{
 /* nav + article */
 
 .nav_article{
-    /* display: block; */
+   display: flex;
+   width: 60vw;
+   margin: 5vw auto;
 }
 
 
 /* nav */
 .nav_wrap{
-    background-color: #1041FF;
-    width: 500px;
-    display: inline-block;
+    /* background-color: #1041FF; */
+    width: 30vw;
+    border: 1px solid white;
+}
+
+.nav{
+    margin: 20px 10px;
 }
 
 
 /* ARTLCLE */
-
-
 .article_wrap{
     display: inline-block;
-    width: 500px;
-    height: 500px;
-    background-color: #082180;
-    
+    width: 70vw;
+    height: 600px;
+    /* background-color: #08801a; */
+    border: 1px solid white;
+    position: relative;
+}
+
+
+/* topics */
+.content{
+    margin: 20px 10px;
+    text-align: center;
+    /* background-color: #800E0B; */
+}
+
+.content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.content p{
+    line-height:1.5rem;
 }
 
 
 
-/* create */
+/* contextControl -> create, update, delete 3개 다 있음  */
+.button_wrap{
+    /* background-color: #fbf242;   */
+    text-align: right;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.button_wrap>li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.button_wrap>li>a{
+font-size: 1.5rem;
+}
+
+/* create  -> create 만 있음 */
 .create_button{
     /* background-color: red; */
-
 }
+
 .create_from{
     background-color: rebeccapurple;
     display:  inline-block;
-        width: 500px;
-            height: 500px;
 }
 
-/* control */
-.contextControl{
-    display: block;
-    background-color: #426DFB;
-}
+
+
 
