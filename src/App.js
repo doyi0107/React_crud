@@ -1,21 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-
+import "./App.css";
+import './reset.css';
 
 function Header(props) {
-  return(
-    <div>
-      <h1>{props.title}</h1>
+  return (
+    <div class="container">
+      <div class="neon">{props.title}</div>
+      <div class="flux">{props.title_2}</div>
     </div>
-  )
+  );
 }
 
 function Nav(props) {
   const lis = []
   for (let i = 0; i < props.topics.length; i++) {
       let t = props.topics[i]
-      lis.push(<li key={t.id}><a id={t.id} href={'/read'+t.id} onClick = {(event)=>{
+      lis.push(<li class="nav" key={t.id}><a id={t.id} href={'/read'+t.id} onClick = {(event)=>{
         event.preventDefault();
         props.onChangeMode(Number(event.target.id));
       }}>{t.title}</a></li>)
@@ -40,7 +41,7 @@ function Article(props) {
 
 function Create(props) {
   return(
-    <div>
+    <div class="create_from">
       <h2>create</h2>
       <form onSubmit={(event)=>{
           event.preventDefault();
@@ -103,7 +104,8 @@ function App() {
         }
       }
       content = <Article title={title} body={body}/>
-      contextControl = <><li><a href='/update/' onClick={(event)=>{
+      // contextControl
+      contextControl = <><li class="control"><a href='/update/' onClick={(event)=>{
           event.preventDefault();
           setMode("UPDATE");
       }}>update</a></li>
@@ -153,20 +155,43 @@ function App() {
 }
 
 return (
-    <div>
-      <Header title = "DOYI WORLD"/>
-      <Nav topics={topics} onChangeMode={(_id)=>{
-          setMode("READ");
-          setId(_id)
-      }}/>
-      {content}
-      {contextControl}
-      <li><a href='/create/' onClick={(event)=>{
+  <div>
+    <Header title="DOYI" title_2="WORLD" />
+
+    <div class="nav_article">
+
+      <div class="nav_wrap">
+        <Nav
+          topics={topics}
+          onChangeMode={(_id) => {
+            setMode("READ");
+            setId(_id);
+          }}
+        />
+      </div>
+
+      <div class="article_wrap">{content}</div>
+    </div>
+
+
+    <div class="contextControl">
+    {contextControl}
+    <li class="create_button">
+      <a
+        href="/create/"
+        onClick={(event) => {
           event.preventDefault();
           setMode("CREATE");
-      }}>create</a></li>
-    </div>
-  )
+        }}
+      >
+        create
+      </a>
+    </li>
+  </div>
+
+
+  </div>
+);
 }
 
 
