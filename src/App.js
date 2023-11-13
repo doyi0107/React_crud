@@ -19,7 +19,7 @@ function Nav(props) {
       lis.push(<li class="nav" key={t.id}><a id={t.id} href={'/read'+t.id} onClick = {(event)=>{
         event.preventDefault();
         props.onChangeMode(Number(event.target.id));
-      }}>{t.title}</a></li>)
+      }}>º {t.title}</a></li>)
     }
     
   return(
@@ -39,45 +39,72 @@ function Article(props) {
 }
 
 function Create(props) {
-  return(
+  return (
     <div class="create_from">
-      <h2>create</h2>
-      <form onSubmit={(event)=>{
+      <h2>Create</h2>
+      <form
+        onSubmit={(event) => {
           event.preventDefault();
           const title = event.target.title.value;
           const body = event.target.title.value;
-          props.onCreate(title,body);
-      }}>
-        <p><input type="text" name="title" placeholder="title" /></p>
-        <p><textarea type="text" placeholder="title" /></p>
-        <p><input type="submit" value="submit"/></p>
+          props.onCreate(title, body);
+        }}
+      >
+        <p class="title">
+          <input type="text" name="title" placeholder="제목을 입력하세요." />
+        </p>
+        <p class="text">
+          <textarea type="text" placeholder="내용을 입력하세요." />
+        </p>
+        <p class="submit">
+          <input type="submit" value="submit" />
+        </p>
       </form>
     </div>
-  )
+  );
 }
 
 function Update(props) {
   const [title, setTitle] = useState(props.title);
   const [body, setBody] = useState(props.body);
-  return(
+  return (
     <div>
-      <h2>update</h2>
-      <form onSubmit={(event)=>{
+      <h2> Update</h2>
+      <form
+        onSubmit={(event) => {
           event.preventDefault();
           const title = event.target.title.value;
           const body = event.target.title.value;
-          props.onUpdate(title,body);
-      }}>
-        <p><input type="text" name="title" placeholder="title" value={title} onChange={(event)=>{
+          props.onUpdate(title, body);
+        }}
+      >
+        <p class="title">
+          <input
+            type="text"
+            name="title"
+            placeholder="제목을 입력하세요."
+            value={title}
+            onChange={(event) => {
               setTitle(event.target.value);
-        }}/></p>
-        <p><textarea type="text" placeholder="title" value={body} onChange={(event)=>{
+            }}
+          />
+        </p>
+        <p class="text">
+          <textarea
+            type="text"
+            placeholder="내용을 입력하세요."
+            value={body}
+            onChange={(event) => {
               setBody(event.target.value);
-        }} /></p>
-        <p><input type="submit" value="submit"/></p>
+            }}
+          />
+        </p>
+        <p class="submit">
+          <input type="submit" value="submit" />
+        </p>
       </form>
     </div>
-  )
+  );
 }
 
 function App() {
@@ -105,7 +132,7 @@ function App() {
   let content = null;
   let contextControl = null;
   if(mode === "WELCOME"){
-      content = <Article title="Hi, WELCOME DOYI WORID" body="Let's learn doyi's life"/>     
+      content = <Article title="Hi, WELCOME DOYI WORID" body="Let's learn doyi's developer life"/>     
   }else if(mode === "READ"){
       let title, body = null;
       for (let i = 0; i< topics.length; i++) {
@@ -118,7 +145,8 @@ function App() {
       // contextControl
       contextControl = (
         <>
-          <li class="control">
+          {/* update */}
+          <li class="update">
             <a
               href="/update/"
               onClick={(event) => {
@@ -129,7 +157,9 @@ function App() {
               update
             </a>
           </li>
-          <li>
+
+          {/* delete */}
+          <li class="delete">
             <input
               type="submit"
               value="delete"

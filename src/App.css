@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(60, 60, 60);
 }
 
 a,h2,title,body{
@@ -83,22 +83,29 @@ a,h2,title,body{
 
 /* nav + article */
 
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
+
 .nav_article{
    display: flex;
-   width: 60vw;
+   width: 65vw;
    margin: 5vw auto;
+   border: 2px solid rgb(218, 255, 5);
+   border-radius: 20%;
 }
 
 
 /* nav */
 .nav_wrap{
+    margin-top: 80px;
     /* background-color: #1041FF; */
     width: 30vw;
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 .nav{
-    margin: 20px 10px;
+    font:1rem/1.2rem 'Gothic A1',
+        sans-serif;
+    margin: 20px 10px 20px 30px;
 }
 
 
@@ -106,23 +113,24 @@ a,h2,title,body{
 .article_wrap{
     display: inline-block;
     width: 70vw;
-    height: 600px;
+    height: 700px;
     /* background-color: #08801a; */
-    border: 1px solid white;
+    border-left: 1px solid white;
     position: relative;
 }
 
 
 /* topics */
 .content{
-    margin: 20px 10px;
+    margin: 70px 20px ;
     text-align: center;
     /* background-color: #800E0B; */
 }
 
 .content h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font: 1.8rem 'Gothic A1',
+        sans-serif;
+    margin-bottom: 30px;
 }
 
 .content p{
@@ -136,8 +144,8 @@ a,h2,title,body{
     /* background-color: #fbf242;   */
     text-align: right;
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    bottom: 10px;
+    left: 20px;
 }
 
 .button_wrap>li {
@@ -146,17 +154,81 @@ a,h2,title,body{
 }
 
 .button_wrap>li>a{
-font-size: 1.5rem;
+    font: 1.5rem 'Gothic A1',
+        sans-serif;
 }
 
-/* create  -> create 만 있음 */
-.create_button{
-    /* background-color: red; */
+
+/* create, update form */
+
+
+input {
+    background-color: transparent;
+    border: 1px solid white;
+    color: #ffffff;
+    font: 1rem 'Gothic A1',
+        sans-serif;
+    padding-left: 10px;
 }
 
-.create_from{
-    background-color: rebeccapurple;
-    display:  inline-block;
+input::placeholder {
+    padding-left: 10px;
+    color: #ffffff;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea::placeholder {
+    color: #ffffff;
+    padding-left: 10px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.submit{
+    width: 200px;
+    margin: 10px auto;
+}
+
+.submit>input{
+    font-size: 1.3rem;
+    color: white;
+    border: 0;
+}
+
+
+.title>input{
+    width: 20vw;
+    height: 50px;
+    
+}
+
+.text>textarea{
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-top: 20px;
+    width: 30vw;
+    height: 300px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font: 0.9rem/1.4rem 'Gothic A1',
+        sans-serif;
+}
+
+
+
+/* delete */
+
+.delete>input{
+    color: white;
+    border: 0;
+    background-color: transparent;
+    font-size: 1.5rem;
 }
 
 
