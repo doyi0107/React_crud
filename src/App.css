@@ -89,7 +89,7 @@ a,h2,title,body{
    display: flex;
    width: 65vw;
    margin: 5vw auto;
-   border: 2px solid rgb(218, 255, 5);
+   border: 3px solid rgb(218, 255, 5);
    border-radius: 20%;
 }
 
@@ -161,6 +161,10 @@ a,h2,title,body{
 
 /* create, update form */
 
+form{
+    position: relative;
+}
+
 
 input {
     background-color: transparent;
@@ -172,7 +176,6 @@ input {
 }
 
 input::placeholder {
-    padding-left: 10px;
     color: #ffffff;
 }
 
@@ -182,22 +185,25 @@ input:focus {
 
 textarea::placeholder {
     color: #ffffff;
-    padding-left: 10px;
 }
 
 textarea:focus {
     outline: none;
 }
 
-.submit{
-    width: 200px;
-    margin: 10px auto;
+ 
+.submit>input{
+    margin-top: 8px;
+    position: absolute;
+    right: 90px;
+    font: 1rem 'Gothic A1',
+     sans-serif;
+    color: white;
+    border: 1px solid white;
 }
 
-.submit>input{
-    font-size: 1.3rem;
-    color: white;
-    border: 0;
+.submit>input:hover{
+    cursor: pointer;
 }
 
 
@@ -228,7 +234,8 @@ textarea:focus {
     color: white;
     border: 0;
     background-color: transparent;
-    font-size: 1.5rem;
+    font: 1.5rem 'Gothic A1',
+        sans-serif;
 }
 
 

@@ -54,7 +54,7 @@ function Create(props) {
           <input type="text" name="title" placeholder="제목을 입력하세요." />
         </p>
         <p class="text">
-          <textarea type="text" placeholder="내용을 입력하세요." />
+          <textarea type="text" name="body" placeholder="내용을 입력하세요." />
         </p>
         <p class="submit">
           <input type="submit" value="submit" />
@@ -74,7 +74,7 @@ function Update(props) {
         onSubmit={(event) => {
           event.preventDefault();
           const title = event.target.title.value;
-          const body = event.target.title.value;
+          const body = event.target.body.value;
           props.onUpdate(title, body);
         }}
       >
@@ -92,6 +92,7 @@ function Update(props) {
         <p class="text">
           <textarea
             type="text"
+            name="body"
             placeholder="내용을 입력하세요."
             value={body}
             onChange={(event) => {
