@@ -46,7 +46,7 @@ function Create(props) {
         onSubmit={(event) => {
           event.preventDefault();
           const title = event.target.title.value;
-          const body = event.target.title.value;
+          const body = event.target.body.value;
           props.onCreate(title, body);
         }}
       >
