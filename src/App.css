@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(60, 60, 60);
+    background-color: rgb(48, 48, 48);
 }
 
 a,h2,title,body{
@@ -115,7 +115,7 @@ a,h2,title,body{
     width: 70vw;
     height: 700px;
     /* background-color: #08801a; */
-    border-left: 1px solid white;
+    border-left: 1px solid rgb(218, 255, 5);
     position: relative;
 }
 
@@ -236,6 +236,51 @@ textarea:focus {
     background-color: transparent;
     font: 1.5rem 'Gothic A1',
         sans-serif;
+}
+
+/* OPTIONAL / defining page color variables */
+:root {
+    --black: #000000;
+    --grey1: #a3a3a3;
+    --grey2: #383838;
+    --white: #ffffff;
+    --green: #62Ba9B;
+}
+
+
+/* 마우스커서 style*/
+
+
+* {
+    cursor: none;
+}
+
+
+.small {
+    height: 10px;
+    width: 10px;
+    background-color: var(--green);
+    border-radius: 10px;
+    filter: drop-shadow(0 0 5px var(--green)) drop-shadow(0 0 20px var(--green));
+
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: height 0.2s, width 0.2s;
+}
+
+
+.big {
+    height: 50px;
+    width: 50px;
+    border: 3px solid var(--green);
+    border-radius: 100px;
+    filter: drop-shadow(0 0 5px var(--green)) drop-shadow(0 0 20px var(--green));
+
+    position: fixed;
+    pointer-events: none;
+    transform: translate(calc(-50%), -50%);
+    transition: height 0.5s, width 0.5s, filter 0.5s;
 }
 
 

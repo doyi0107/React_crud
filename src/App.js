@@ -1,7 +1,6 @@
-import './App.css';
-import { useState } from 'react';
 import "./App.css";
-import './reset.css';
+import { useEffect, useState } from "react";
+import "./reset.css";
 
 function Header(props) {
   return (
@@ -13,20 +12,30 @@ function Header(props) {
 }
 
 function Nav(props) {
-  const lis = []
+  const lis = [];
   for (let i = 0; i < props.topics.length; i++) {
-      let t = props.topics[i]
-      lis.push(<li class="nav" key={t.id}><a id={t.id} href={'/read'+t.id} onClick = {(event)=>{
-        event.preventDefault();
-        props.onChangeMode(Number(event.target.id));
-      }}>º {t.title}</a></li>)
-    }
-    
-  return(
+    let t = props.topics[i];
+    lis.push(
+      <li class="nav" key={t.id}>
+        <a
+          id={t.id}
+          href={"/read" + t.id}
+          onClick={(event) => {
+            event.preventDefault();
+            props.onChangeMode(Number(event.target.id));
+          }}
+        >
+          º {t.title}
+        </a>
+      </li>
+    );
+  }
+
+  return (
     <nav>
       <ol>{lis}</ol>
     </nav>
-  )
+  );
 }
 
 function Article(props) {
@@ -108,6 +117,7 @@ function Update(props) {
   );
 }
 
+
 function App() {
   const [mode, setMode] = useState("WELCOME");
   const [id, setId] = useState(null);
@@ -132,127 +142,168 @@ function App() {
 
   let content = null;
   let contextControl = null;
-  if(mode === "WELCOME"){
-      content = <Article title="Hi, WELCOME DOYI WORID" body="Let's learn doyi's developer life"/>     
-  }else if(mode === "READ"){
-      let title, body = null;
-      for (let i = 0; i< topics.length; i++) {
-        if(topics[i].id === id){
-            title = topics[i].title;
-            body = topics[i].body;
-        }
+  if (mode === "WELCOME") {
+    content = (
+      <Article
+        title="Hi, WELCOME DOYI WORID"
+        body="Let's learn doyi's developer life"
+      />
+    );
+  } else if (mode === "READ") {
+    let title,
+      body = null;
+    for (let i = 0; i < topics.length; i++) {
+      if (topics[i].id === id) {
+        title = topics[i].title;
+        body = topics[i].body;
       }
-      content = <Article title={title} body={body}/>
-      // contextControl
-      contextControl = (
-        <>
-          {/* update */}
-          <li class="update">
-            <a
-              href="/update/"
-              onClick={(event) => {
-                event.preventDefault();
-                setMode("UPDATE");
-              }}
-            >
-              update
-            </a>
-          </li>
+    }
+    content = <Article title={title} body={body} />;
+    // contextControl
+    contextControl = (
+      <>
+        {/* update */}
+        <li class="update">
+          <a
+            href="/update/"
+            onClick={(event) => {
+              event.preventDefault();
+              setMode("UPDATE");
+            }}
+          >
+            update
+          </a>
+        </li>
 
-          {/* delete */}
-          <li class="delete">
-            <input
-              type="submit"
-              value="delete"
-              onClick={(event) => {
-                event.preventDefault();
-                const newtopic = [];
-                for (let i = 0; i < topics.length; i++) {
-                  if (topics[i].id !== id) {
-                    newtopic.push(topics[i]);
-                  }
+        {/* delete */}
+        <li class="delete">
+          <input
+            type="submit"
+            value="delete"
+            onClick={(event) => {
+              event.preventDefault();
+              const newtopic = [];
+              for (let i = 0; i < topics.length; i++) {
+                if (topics[i].id !== id) {
+                  newtopic.push(topics[i]);
                 }
-                setTopics(newtopic);
-                setMode("WELCOME");
-              }}
-            />
-          </li>
-        </>
-      );
-}else if(mode === "CREATE"){
-      content = <Create onCreate={(_title, _body)=>{     
-          const newtopic = {id:nextId, title:_title, body:_body};
+              }
+              setTopics(newtopic);
+              setMode("WELCOME");
+            }}
+          />
+        </li>
+      </>
+    );
+  } else if (mode === "CREATE") {
+    content = (
+      <Create
+        onCreate={(_title, _body) => {
+          const newtopic = { id: nextId, title: _title, body: _body };
           const newtopics = [...topics];
           newtopics.push(newtopic);
           setTopics(newtopics);
           setMode("READ");
           setId(nextId);
-          setNextId(nextId+1);
-      }}/>
-}else if(mode === "UPDATE"){
-      let title, body = null;
-      for (let i = 0; i< topics.length; i++) {
-        if(topics[i].id === id){
-            title = topics[i].title;
-            body = topics[i].body;
-        }
+          setNextId(nextId + 1);
+        }}
+      />
+    );
+  } else if (mode === "UPDATE") {
+    let title,
+      body = null;
+    for (let i = 0; i < topics.length; i++) {
+      if (topics[i].id === id) {
+        title = topics[i].title;
+        body = topics[i].body;
       }
-      content = <Update title={title} body={body} onUpdate={(_title,_body)=>{
-            const updatedtopic = {id:id, title:_title, body:_body};
-            const newtopics = [...topics];
-            for (let i = 0; i < newtopics.length; i++) {
-              if(newtopics[i].id === id){
-                newtopics[i] = updatedtopic;
-                break
-              }
+    }
+    content = (
+      <Update
+        title={title}
+        body={body}
+        onUpdate={(_title, _body) => {
+          const updatedtopic = { id: id, title: _title, body: _body };
+          const newtopics = [...topics];
+          for (let i = 0; i < newtopics.length; i++) {
+            if (newtopics[i].id === id) {
+              newtopics[i] = updatedtopic;
+              break;
             }
-            setTopics(newtopics);
-            setMode("READ");
-      }}/>
-}
+          }
+          setTopics(newtopics);
+          setMode("READ");
+        }}
+      />
+    );
+  }
 
-return (
-  <div>
-    <Header title="DOYI" title_2="WORLD" />
+  useEffect(() => {
+    let cursorBig = document.querySelector(".big");
+    let cursorSmall = document.querySelector(".small");
 
-    <div class="nav_article">
+    document.addEventListener("mousemove", function (e) {
+      let x = e.clientX;
+      let y = e.clientY;
+      cursorBig.style.transform = `translate3d(calc(${x}px - 50%), calc(${y}px - 413%), 0)`;
+    });
 
-      {/* nav */}
-      <div class="nav_wrap">
-        <Nav
-          topics={topics}
-          onChangeMode={(_id) => {
-            setMode("READ");
-            setId(_id);
-          }}
-        />
+    document.addEventListener("mousemove", function (e) {
+      let x = e.clientX;
+      let y = e.clientY;
+      cursorSmall.style.left = x + "px";
+      cursorSmall.style.top = y + "px";
+    });
+  }, []);
+
+
+  return (
+    <div>
+      <Header title="DOYI" title_2="WORLD" />
+
+      {/* 마우스 커서 스타일 */}
+      <div>
+        <div class="cursor small"></div>
+        <div class="cursor big"></div>
       </div>
 
-      {/* article */}
-      <div class="article_wrap">
-        <div class="content">{content}</div>
-
-        <div class="button_wrap">
-          <li class="create_button">
-            <a
-              href="/create/"
-              onClick={(event) => {
-                event.preventDefault();
-                setMode("CREATE");
-              }}
-            >
-              create
-            </a>
-          </li>
-          {/* update / delete 버튼이 있음 */}
-          {contextControl}
+      <div class="nav_article">
+        {/* nav */}
+        <div class="nav_wrap">
+          <Nav
+            topics={topics}
+            onChangeMode={(_id) => {
+              setMode("READ");
+              setId(_id);
+            }}
+          />
         </div>
-        
+
+        {/* article */}
+        <div class="article_wrap">
+          <div class="content">{content}</div>
+
+          <div class="button_wrap">
+            <li class="create_button">
+              <a
+                href="/create/"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setMode("CREATE");
+                }}
+              >
+                create
+              </a>
+            </li>
+            {/* update / delete 버튼이 있음 */}
+            {contextControl}
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+
+  
 }
 
-
-export default App;
+export default  App;
