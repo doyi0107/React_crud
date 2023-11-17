@@ -117,7 +117,6 @@ function Update(props) {
   );
 }
 
-
 function App() {
   const [mode, setMode] = useState("WELCOME");
   const [id, setId] = useState(null);
@@ -243,20 +242,16 @@ function App() {
     let cursorSmall = document.querySelector(".small");
 
     document.addEventListener("mousemove", function (e) {
-        let x = e.clientX;
-        let y = e.clientY;
-        cursorBig.style.left = x + "px";
-        cursorBig.style.top = y + "px";
-    });
+      let x = e.clientX;
+      let y = e.clientY;
+      
+      cursorSmall.style.left = x + "px";
+      cursorSmall.style.top = y + "px";
 
-    document.addEventListener("mousemove", function (e) {
-        let x = e.clientX;
-        let y = e.clientY;
-        cursorSmall.style.left = x + "px";
-        cursorSmall.style.top = y + "px";
+      cursorBig.style.left = x + "px";
+      cursorBig.style.top = y + "px";
     });
   }, []);
-
 
   return (
     <div>
@@ -303,8 +298,6 @@ function App() {
       </div>
     </div>
   );
-
-  
 }
 
-export default  App;
+export default App;
