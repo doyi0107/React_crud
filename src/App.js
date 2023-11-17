@@ -243,16 +243,17 @@ function App() {
     let cursorSmall = document.querySelector(".small");
 
     document.addEventListener("mousemove", function (e) {
-      let x = e.clientX;
-      let y = e.clientY;
-      cursorBig.style.transform = `translate3d(calc(${x}px - 50%), calc(${y}px - 413%), 0)`;
+        let x = e.clientX;
+        let y = e.clientY;
+        cursorBig.style.left = x + "px";
+        cursorBig.style.top = y + "px";
     });
 
     document.addEventListener("mousemove", function (e) {
-      let x = e.clientX;
-      let y = e.clientY;
-      cursorSmall.style.left = x + "px";
-      cursorSmall.style.top = y + "px";
+        let x = e.clientX;
+        let y = e.clientY;
+        cursorSmall.style.left = x + "px";
+        cursorSmall.style.top = y + "px";
     });
   }, []);
 
