@@ -1,6 +1,8 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import "./reset.css";
+import "./App.scss";
+import Background from "./Background";
 
 function Header(props) {
   return (
@@ -118,6 +120,7 @@ function Update(props) {
 }
 
 function App() {
+
   const [mode, setMode] = useState("WELCOME");
   const [id, setId] = useState(null);
   const [nextId, setNextId] = useState(4);
@@ -251,7 +254,9 @@ function App() {
       cursorBig.style.left = x + "px";
       cursorBig.style.top = y + "px";
     });
-  }, []);
+
+ 
+  },);
 
   return (
     <div>
@@ -296,6 +301,8 @@ function App() {
           </div>
         </div>
       </div>
+
+      <Background />
     </div>
   );
 }
