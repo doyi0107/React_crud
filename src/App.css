@@ -1,23 +1,29 @@
-body{
+body {
     background-color: rgb(48, 48, 48);
 }
 
-a,h2,title,body{
+a,
+h2,
+title,
+body {
     color: white;
 }
 
-
+body{
+    overflow: hidden;
+}
 
 /* DOYI WORLD */
 
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400&display=swap');
 
 .container {
+    position: relative;
+    max-height: 100vh;
     z-index: 99;
     margin: 3% 0%;
     display: block;
     text-align: center;
-    vertical-align: middle;
 }
 
 .neon {
@@ -86,65 +92,68 @@ a,h2,title,body{
 
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap');
 
-.nav_article{
-   display: flex;
-   width: 60vw;
-   margin: 2vw auto;
-   border: 3px solid rgb(218, 255, 5);
-   border-radius: 100px;
+.nav_article {
+    display: flex;
+    width: 60vw;
+    margin: 2vw auto;
+    border: 3px solid var(--green);
+    
+    border-radius: 100px;
 }
 
 
 /* nav */
-.nav_wrap{
+.nav_wrap {
     z-index: 99;
-    margin-top: 80px;
+    margin-top: 50px;
     /* background-color: #1041FF; */
     width: 30vw;
     /* border: 1px solid white; */
 }
 
-.nav{
-    font:1rem/1.2rem 'Gothic A1',
+.nav {
+    font: 1rem/1.2rem 'Gothic A1',
         sans-serif;
     margin: 20px 10px 20px 30px;
 }
 
 
 /* ARTLCLE */
-.article_wrap{
+
+.article_wrap {
     display: inline-block;
     width: 70vw;
-    height: 470px;
+    height: 450px;
     /* background-color: #08801a; */
-    border-left: 1px solid rgb(218, 255, 5);
+    border-left: 1px solid var(--green);
     position: relative;
 }
 
 
-/* topics 여기서부터 scroll 안먹음 ! !*/ 
-.content{
-    overflow: scroll;
+.content {
     height: 350px;
-    margin: 30px 20px ;
+    margin: 0px 50px;
     text-align: center;
-    /* background-color: #800E0B; */
 }
 
 .content h2 {
+    margin:35px 0 10px;
     font: 1.8rem 'Gothic A1',
         sans-serif;
-    margin-bottom: 30px;
 }
 
-.content p{
-    line-height:1.5rem;
+.content p:not(.title, .text) {
+    position: relative;
+    z-index: 99;
+    overflow: scroll;
+    height: 300px;
+    font: 1rem/1.5rem 'Gothic A1',
+            sans-serif;
 }
-
 
 
 /* contextControl -> create, update, delete 3개 다 있음  */
-.button_wrap{
+.button_wrap {
     z-index: 99;
     /* background-color: #fbf242;   */
     text-align: right;
@@ -158,7 +167,7 @@ a,h2,title,body{
     margin-left: 20px;
 }
 
-.button_wrap>li>a{
+.button_wrap>li>a {
     font: 1.5rem 'Gothic A1',
         sans-serif;
 }
@@ -166,10 +175,11 @@ a,h2,title,body{
 
 /* create, update form */
 
-form{
+form {
+    z-index: 99;
     position: relative;
+    height: 450px;
 }
-
 
 input {
     background-color: transparent;
@@ -196,34 +206,35 @@ textarea:focus {
     outline: none;
 }
 
- 
-.submit>input{
-    margin-top: 8px;
+.submit>input {
+    margin-top: 15px;
     position: absolute;
-    right: 90px;
+    right: 35px;
     font: 1rem 'Gothic A1',
-     sans-serif;
+        sans-serif;
     color: white;
     border: 1px solid white;
 }
 
-.submit>input:hover{
+.submit>input:hover {
     cursor: pointer;
 }
 
 
-.title>input{
-    width: 20vw;
-    height: 50px;
-    
+.title>input {
+    margin-top: 5px;
+    width: 30vw;
+    height: 35px;
+    font: 0.9rem/1.4rem 'Gothic A1',
+            sans-serif;
 }
 
-.text>textarea{
+.text>textarea {
     margin-top: 20px;
     padding-left: 10px;
-    padding-top: 20px;
+    padding-top: 10px;
     width: 30vw;
-    height: 300px;
+    height: 210px;
     background-color: transparent;
     border: 1px solid white;
     color: white;
@@ -232,10 +243,9 @@ textarea:focus {
 }
 
 
-
 /* delete */
 
-.delete>input{
+.delete>input {
     color: white;
     border: 0;
     background-color: transparent;
@@ -254,8 +264,6 @@ textarea:focus {
 
 
 /* 마우스커서 style*/
-
-
 * {
     cursor: none;
 }
@@ -287,7 +295,3 @@ textarea:focus {
     transform: translate(calc(-50%), -50%);
     transition: height 0.5s, width 0.5s, filter 0.5s;
 }
-
-
-
-

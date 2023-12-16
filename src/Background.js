@@ -1,11 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { gsap, Quad } from "gsap";
-// import "./App.scss";
-// import "./App.css";
 
 const StarrySky = () => {
-  const layers = 6;
-  const starDensity = 0.0005;
+  const layers = 5;
+  const starDensity = 0.0004;
 
   const ww = window.innerWidth;
   const wh = window.innerHeight;
@@ -13,7 +11,7 @@ const StarrySky = () => {
   const dpi = window.devicePixelRatio;
   const cw = ww * dpi;
   const ch = wh * dpi;
-  const stars = ww * ww * starDensity * dpi;
+  const stars = 400; // Set a fixed number of stars
 
   const contexts = [];
 
@@ -75,7 +73,7 @@ const StarrySky = () => {
 
       if (s >= 1) {
         ctx.globalAlpha = 0.03;
-        const shineSize = s * s * s * 1.5 * dpi;
+        const shineSize = s * s * 1.5 * dpi;
         ctx.fillRect(
           (s - shineSize) / 1.5,
           (s - shineSize) / 1.5,
