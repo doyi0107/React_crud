@@ -275,7 +275,6 @@ textarea:focus {
     background-color: var(--green);
     border-radius: 10px;
     filter: drop-shadow(0 0 5px var(--green)) drop-shadow(0 0 20px var(--green));
-
     position: fixed;
     pointer-events: none;
     transform: translate(-50%, -50%);
@@ -289,7 +288,6 @@ textarea:focus {
     border: 3px solid var(--green);
     border-radius: 100px;
     filter: drop-shadow(0 0 5px var(--green)) drop-shadow(0 0 20px var(--green));
-
     position: fixed;
     pointer-events: none;
     transform: translate(calc(-50%), -50%);
